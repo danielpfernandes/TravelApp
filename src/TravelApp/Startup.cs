@@ -35,6 +35,7 @@ namespace TravelApp
             options.UseSqlServer(Configuration["Data:DefaultConnection:TripsConnectionString"])
             );
             services.AddTransient<TripsSeedData>();
+            services.AddScoped<TripsRepository>();
             //services.AddIdentity<AppUser, IdentityRole>(config =>
             //{
             //    config.User.RequireUniqueEmail = true;
