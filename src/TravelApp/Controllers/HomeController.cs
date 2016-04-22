@@ -20,7 +20,7 @@ namespace TravelApp.Controllers
             ViewBag.Trip = new Trip()
             {
                 Name = "Sample Trip",
-                CreatedDate = DateTime.Now
+                DateCreated = DateTime.Now
             };
 
             var trips = db.GetAllTrips();

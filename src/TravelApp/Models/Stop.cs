@@ -7,11 +7,11 @@ namespace TravelApp.Models
 {
     public class Stop
     {
-        public int ID { get; set; }
-        public int Name { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public DateTime ArrivalDate { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
-        public DateTime ArrivalDate { get; set; }
         public int Order { get; set; }
     }
 }

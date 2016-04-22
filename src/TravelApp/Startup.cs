@@ -34,6 +34,7 @@ namespace TravelApp
                 options =>
             options.UseSqlServer(Configuration["Data:DefaultConnection:TripsConnectionString"])
             );
+            services.AddTransient<TripsSeedData>();
             //services.AddIdentity<AppUser, IdentityRole>(config =>
             //{
             //    config.User.RequireUniqueEmail = true;
@@ -42,12 +43,13 @@ namespace TravelApp
             //    config.Password.RequireNonLetterOrDigit = false;
             //    config.Cookies.ApplicationCookie.LoginPath = "/Auth/Login";
             //}).AddEntityFrameworkStores<TripContext>();
-    }
-        
+        }
 
+      
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app)
         {
+            TripsSeedData seed = new TripsSeedData(new TripContext());
             app.UseIISPlatformHandler();
             //app.UseDefaultFiles();
             app.UseStaticFiles();
@@ -63,6 +65,8 @@ namespace TravelApp
             {
                 await context.Response.WriteAsync("Hello World!");
             });
+
+            seed.InsertSeedData();
         }
 
 
