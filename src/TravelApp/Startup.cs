@@ -10,6 +10,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.PlatformAbstractions;
 using Microsoft.Data.Entity;
 using TravelApp.Models;
+using AutoMapper;
+using TravelApp.ViewModels;
 
 namespace TravelApp
 {
@@ -23,6 +25,7 @@ namespace TravelApp
               .AddJsonFile("config.json");
 
             Configuration = builder.Build();
+        
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -51,6 +54,7 @@ namespace TravelApp
         public void Configure(IApplicationBuilder app)
         {
             TripsSeedData seed = new TripsSeedData(new TripContext());
+            
             app.UseIISPlatformHandler();
             //app.UseDefaultFiles();
             app.UseStaticFiles();
@@ -68,7 +72,15 @@ namespace TravelApp
             });
 
             seed.InsertSeedData();
+            Mapper.Initialize(config =>
+                {
+                    config.CreateMap<TripViewModel, TripViewModel>().ReverseMap();
+                }
+            );
+
         }
+
+
 
 
         // Entry point for the application.
