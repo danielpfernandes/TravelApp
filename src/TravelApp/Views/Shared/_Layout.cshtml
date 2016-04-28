@@ -4,9 +4,14 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/css/bootstrap.css" rel="stylesheet" />
     <title>@ViewBag.Title</title>
 </head>
 <body>
+
+    <div class="navbar-collapse collapse">
+        @await Html.PartialAsync("_LoginPartial")
+    </div>
     <div id="sidebar">
         <img src="~/img/user1.png" alt="headshot" class="headshot" />
         <span>Bill G.</span>
@@ -19,7 +24,7 @@
     </div>
     <div id="wrapper">
         <div id="main">
-            <h1>MVC 6</h1>
+            <h1>Travel App</h1>
             <div>
                 @RenderBody()
             </div>

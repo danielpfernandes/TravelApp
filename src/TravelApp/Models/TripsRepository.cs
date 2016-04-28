@@ -17,8 +17,17 @@ namespace TravelApp.Models
             return db.Trips.OrderBy(t => t.Name).Where(t => t.Id == Id).ToList();
         }
 
+        public IEnumerable<Stop> GetStops(string Name) {
+            return db.Stops.OrderBy(t => t.Order).Where(t => t.Name == Name).ToList();
+        }
+
         public void SaveTrip(Trip newTrip) {
             db.Add(newTrip);
+            db.SaveChanges();
+        }
+
+        public void AddStop(Stop newStop) {
+            db.Stops.Add(newStop);
             db.SaveChanges();
         }
 

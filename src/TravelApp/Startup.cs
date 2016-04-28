@@ -12,6 +12,8 @@ using Microsoft.Data.Entity;
 using TravelApp.Models;
 using AutoMapper;
 using TravelApp.ViewModels;
+using TravelApp.Services;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace TravelApp
 {
@@ -39,14 +41,15 @@ namespace TravelApp
             );
             services.AddTransient<TripsSeedData>();
             services.AddScoped<TripsRepository>();
-            //services.AddIdentity<AppUser, IdentityRole>(config =>
-            //{
-            //    config.User.RequireUniqueEmail = true;
-            //    config.Password.RequiredLength = 8;
-            //    config.Password.RequireUppercase = false;
-            //    config.Password.RequireNonLetterOrDigit = false;
-            //    config.Cookies.ApplicationCookie.LoginPath = "/Auth/Login";
-            //}).AddEntityFrameworkStores<TripContext>();
+            services.AddScoped<CoordinateService>();
+            services.AddIdentity<AppUser, IdentityRole>(config =>
+            {
+                config.User.RequireUniqueEmail = true;
+                config.Password.RequiredLength = 8;
+                config.Password.RequireUppercase = false;
+                config.Password.RequireNonLetterOrDigit = false;
+                config.Cookies.ApplicationCookie.LoginPath = "/Auth/Login";
+            }).AddEntityFrameworkStores<TripContext>();
         }
 
       

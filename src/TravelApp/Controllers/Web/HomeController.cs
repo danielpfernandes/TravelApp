@@ -13,7 +13,7 @@ namespace TravelApp.Controllers
     public class HomeController : Controller
     {
         // GET: /<controller>/
-        [Authorize]
+        //[Authorize]
         public IActionResult Index()
         {
             TripsRepository db = new TripsRepository();
@@ -34,6 +34,11 @@ namespace TravelApp.Controllers
         }
 
         public IActionResult Contact()
+        {
+            return View();
+        }
+
+        public IActionResult Trips()
         {
             return View();
         }

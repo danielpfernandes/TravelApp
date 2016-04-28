@@ -10,7 +10,7 @@ using TravelApp.Controllers;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace XXXXX.Controllers.Auth
+namespace TravelApp.Controllers.Auth
 {
 // [Route("[controller]/[action]")]
     public class AuthController : Controller
